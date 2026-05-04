@@ -1,0 +1,91 @@
+@use "sass:color";
+
+$primary: #4a6cf7;
+$error: #d9534f;
+$success: #28a745;
+$border-radius: 6px;
+
+.container {
+  max-width: 420px;
+  margin: 60px auto;
+  padding: 32px;
+  background: #fff;
+  border-radius: $border-radius;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  font-family: system-ui, sans-serif;
+  text-align: center;
+
+  h1 {
+    margin-bottom: 24px;
+    font-size: 1.8rem;
+    font-weight: 600;
+  }
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  .form-group {
+    text-align: left;
+
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: 500;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid #ccc;
+      border-radius: $border-radius;
+      font-size: 1rem;
+      transition: border-color 0.2s;
+
+      &:focus {
+        border-color: $primary;
+        outline: none;
+      }
+    }
+
+    .error {
+      margin-top: 4px;
+      font-size: 0.85rem;
+      color: $error;
+    }
+  }
+}
+
+button {
+  padding: 12px;
+  background: $primary;
+  color: #fff;
+  border: none;
+  border-radius: $border-radius;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+
+  &:hover:not(:disabled) {
+    background: color.adjust($primary, $lightness: -8%);
+  }
+
+  &:disabled {
+    background: #aaa;
+    cursor: not-allowed;
+  }
+}
+
+.success {
+  margin-top: 20px;
+  color: $success;
+  font-weight: 500;
+}
+
+.error {
+  margin-top: 20px;
+  color: $error;
+  font-weight: 500;
+}

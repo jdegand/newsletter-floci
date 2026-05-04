@@ -1,0 +1,12 @@
+services:
+  floci:
+    image: floci/floci:latest
+    ports:
+      - "4566:4566"
+    environment:
+      FLOCI_SERVICES_SES_ENABLED: "true"
+    networks:
+      - floci
+
+networks:
+  floci:

@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: newsletterapi
+
+server:
+  port: 8080
+
+aws:
+  region: us-east-1
+  endpoint: http://localhost:4566
+  dynamodb:
+    tableName: Subscribers
+  ses:
+    fromAddress: no-reply@example.com
