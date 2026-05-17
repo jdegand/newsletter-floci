@@ -24,7 +24,7 @@ sudo docker compose up -d
 
 Floci exposes AWS services at: `http://localhost:4566`
 
-1. Start the Spring Boot API
+2. Start the Spring Boot API
 
 ```bash
 mvn spring-boot:run
@@ -34,7 +34,7 @@ Or run it from your IDE.
 
 API runs at: `http://localhost:8080`
 
-1. Start the Angular Frontend
+3. Start the Angular Frontend
 
 ```bash
 cd newsletter-frontend
@@ -45,12 +45,18 @@ Frontend runs at: `http://localhost:4200`
 
 ---
 
-1. Create the DynamoDB table
+4. Create the DynamoDB table
 
 You need the AWS CLI installed locally:
 
 ```bash
 sudo apt install awscli
+```
+
+Configure your credentials:
+
+```bash
+aws configure
 ```
 
 Run this **once**:
@@ -79,7 +85,7 @@ Expected:
 
 ---
 
-1. Verify SES identity
+5. Verify SES identity
 
 Floci requires SES identities to be verified before sending.
 
@@ -106,7 +112,7 @@ Expected:
 
 ---
 
-1. Test the Newsletter Flow
+6. Test the Newsletter Flow
 
 - Open `http://localhost:4200`
 
@@ -126,7 +132,7 @@ What happens:
 
 ---
 
-1. Check DynamoDB
+7. Check DynamoDB
 
 Run:
 
@@ -151,7 +157,7 @@ Example output:
 
 ---
 
-1. Check the Email (Floci SES Inbox)
+8. Check the Email (Floci SES Inbox)
 
 Floci stores all SES emails here:
 
