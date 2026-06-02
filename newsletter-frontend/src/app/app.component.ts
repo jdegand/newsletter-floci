@@ -1,11 +1,10 @@
 import { Component, inject, signal } from '@angular/core';
 import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
-import { CommonModule } from '@angular/common';
 import { NewsletterService } from './newsletter.service';
 
 @Component({
   selector: 'app-root',
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [ReactiveFormsModule],
   template: `
     <div class="container">
       <h1>Newsletter Signup</h1>
@@ -15,16 +14,23 @@ import { NewsletterService } from './newsletter.service';
           <label for="email">Email</label>
           <input id="email" type="email" formControlName="email" />
 
-          <div class="error" *ngIf="form.controls.email.invalid && form.controls.email.touched">
-            Please enter a valid email.
-          </div>
+          @if (emailControl.invalid && emailControl.touched) {
+            <div class="error">
+              Please enter a valid email.
+            </div>
+          }
         </div>
 
         <button type="submit" [disabled]="form.invalid || loading()">Subscribe</button>
       </form>
 
-      <p class="success" *ngIf="success()">Thanks for subscribing!</p>
-      <p class="error" *ngIf="error()">Something went wrong. Try again.</p>
+      @if (success()) {
+        <p class="success">Thanks for subscribing!</p>
+      }
+      
+      @if (error()) {
+        <p class="error">Something went wrong. Try again.</p>
+      }
     </div>
   `,
   styleUrls: ['./app.component.scss']
@@ -41,8 +47,14 @@ export class AppComponent {
     email: ['', [Validators.required, Validators.email]]
   });
 
+  // Shortcut getter for cleaner template syntax
+  get emailControl() {
+    return this.form.controls.email;
+  }
+
   async onSubmit() {
     if (this.form.invalid) return;
+    
     this.loading.set(true);
     this.success.set(false);
     this.error.set(false);
