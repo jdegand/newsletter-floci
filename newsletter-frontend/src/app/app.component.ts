@@ -36,8 +36,8 @@ import { NewsletterService } from './newsletter.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  private fb = inject(FormBuilder);
-  private newsletter = inject(NewsletterService);
+  private readonly fb = inject(FormBuilder);
+  private readonly newsletter = inject(NewsletterService);
 
   loading = signal(false);
   success = signal(false);
